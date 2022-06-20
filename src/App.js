@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Link, Navigate  } from "react-router-dom";
+import AppRouter from './components/AppRouter';
+import UpTitle from './components/UI/UpTitle/UpTitle';
+import DownTools from './components/DownTools/DownTools';
 
-function App() {
+import {themeReducer} from './reducers/themeReducer'
+import { langReducer } from './reducers/langReducer';
+
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
+import { connect } from 'react-redux';
+function App(props) {
+
+	// const [isDarkTheme, setIsDarkTheme] = useState(true);
+	// if (isDarkTheme){
+	// 	cl = 'app dark'
+	// }
+	
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+		<div className={props.isDarkTheme?'app dark':'app light'}>
+			
+			<BrowserRouter>
+			<UpTitle></UpTitle>
+				<AppRouter/>
+				<DownTools></DownTools>
+			</BrowserRouter>
+			
+		</div>
   );
 }
 
-export default App;
+function mapStateToProps(state) {
+
+	return {
+		lang: state.lang.lang,
+		isDarkTheme: state.theme.isDarkTheme
+	};
+  }
+export default connect(mapStateToProps)(App);
+

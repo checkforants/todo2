@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@import './styles.scss';
+* {
+    margin: 0;
+    padding: 0;
+	box-sizing: border-box;
+	top:0;
+}
+html{
+	position: relative;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+}
+body{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 18px;
+	width: 100vw;
+	height: 100vh;
+	top:0;
+	
+
+	padding: 0;
+	box-sizing: border-box;
+	height: auto;
+	width: auto;
+
+}
+
+#root{
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	top:0;
+
+}
+.app{
+	overflow: hidden;
+	box-sizing: border-box; 
+	position: relative;
+	// width: 100%;
+	height: 100%;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+
+	
+	background-position: 50% 0;
+	background-size: auto 35%;
+	background-repeat: no-repeat;
+	background-attachment: local;
+}
+.dark{
+	background-color: rgb(13, 18, 48);
+	background-image: url('./images/bg-desktop-dark.jpg');
+}
+.light{
+	background-color: rgba(210, 217, 252, 0.318);
+	background-image: url('./images/bg-desktop-light.jpg');
+}
+
+.log-enter {
+	opacity: 0;
+	z-index: 1;
+
+}
+.log-enter-active {
+	opacity: 1;
+	transition: opacity 500ms ease-in;
+}
+.log-exit {
+	opacity: 0;
+}
+.log-exit-active {
+	opacity: 0;
+	transition: opacity 1700ms ease-in;
+}
+.container{
+	overflow: scroll;
+
+	max-width: 500px;
+	min-width: 330px;
+	min-height: auto;
+	max-height: 450px;
+}
+.attribution{
+	color: white;
+	margin-top: 10vh;
+	max-width: 400px;
+	min-width: 330px;
+	min-height: auto;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	a{
+		color:white
+	}
+}
+.lightAttr{
+	color: black;
+	a{
+		color: black;
+	}
+
+}
+
+.example-enter {
+	opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in;
+}
+
+.example-leave {
+	opacity: 1;
+}
+
+.example-leave.example-leave-active {
+	opacity: 0.01;
+	transition: opacity 300ms ease-in;
+}
+
+@media (min-width:767px) {
+	.app{
+		background-size: 100% auto;
+	}
+}
