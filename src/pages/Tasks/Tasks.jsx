@@ -23,7 +23,7 @@ import Loader from '../../components/UI/Loader/Loader';
 import ModalDialog from '../../components/ModalDialog/ModalDialog';
 const Tasks = (props) => {
 	const {auth, firestore} = useContext(Context)
-	console.log(12)
+	
 	const [user] = useAuthState(auth)
 	const a = user.uid
 	const [tasks,setTasks] = useState([]);
