@@ -11,6 +11,7 @@ const About = (props) => {
 				<div><a  target="_blank" href="https://www.flaticon.com/ru/free-icon/planner_7195709" title="правда иконки">Icon</a></div>
 				<div> <a  target="_blank" href="https://github.com/atlassian/react-beautiful-dnd">Drag engine</a> </div>
 				<div> <a   target="_blank" href="https://jfelix.info/blog/using-react-spring-to-animate-svg-icons-dark-mode-toggle">Dark Mode Toggle</a></div>
+				<div><a target="_blank" href="https://icons8.com/icon/47978/редактировать">Редактировать</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a></div>
 			</div>
 
 		</div>

@@ -41,9 +41,9 @@
 .text{
 	flex: 0 1 80%;
 }
-.cross{
-	flex: 0 1 10%;
-	padding: 10px;
+.cross, .edit{
+	flex: 0 1 7%;
+	padding: 10px 5px;
 	background-color: rgba(white, 0);
 	border: 0;
 	display: flex;

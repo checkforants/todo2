@@ -24,7 +24,7 @@ import ModalDialog from '../../components/ModalDialog/ModalDialog';
 const Tasks = (props) => {
 	
 	const {auth, firestore} = useContext(Context)
-	
+	const {editingTaskNumber, setEditingTaskNumber} = useState('')
 	const [user] = useAuthState(auth)
 	const a = user.uid
 	const [tasks,setTasks] = useState([]);
@@ -34,7 +34,17 @@ const Tasks = (props) => {
 	const [userData, loading, error, snapshot] = useDocumentData(ref)
 	// console.log(userData.tasks);
 	const [listState, setListState] = useState('all');
-
+	const checkClickHandler =(step, task)=>{
+		let newTasks = [...userData.tasks]
+		console.log(newTasks);
+		newTasks[step] = {...task, isActive:task.isActive?false:true};
+		let obj =  {...userData, tasks:newTasks}
+		setDoc(ref, obj)
+		// console.log(obj);
+	}
+	const handleEdit=(ind)=>{
+		console.log(ind)
+	}
 	const handleDelete=(step)=>{
 		let tasks = [...userData.tasks]
 		tasks.splice(step, 1)
@@ -69,8 +79,6 @@ const Tasks = (props) => {
 	}
 	const clearCompleted=()=>{
 		// const result = window.confirm(props.lang?'Are you sure?':'Вы уверены?');
-		
-
 		let obj =  {...userData, tasks:userData.tasks.filter(task=>task.isActive)}
 		setDoc(ref, obj);
 		
@@ -91,12 +99,11 @@ const Tasks = (props) => {
 						{...provided.droppableProps}>
 
 							{listState=='active'?userData.tasks.map((task, step)=>{if (task.isActive){return(
-
-									<Task  step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>
+									<Task checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>
 
 								)}})
-							:listState=='completed'?userData.tasks.map((task, step)=>{if (!task.isActive){return(<Task  step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)}})
-							:userData.tasks.map((task, step)=>{return(<Task  step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)})}
+							:listState=='completed'?userData.tasks.map((task, step)=>{if (!task.isActive){return(<Task checkClickHandler={()=>checkClickHandler(step, task)}  step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)}})
+							:userData.tasks.map((task, step)=>{return(<Task checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)})}
 						{provided.placeholder}
 						</div>
 					)}
