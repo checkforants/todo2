@@ -24,7 +24,7 @@ const Signup = (props) => {
 	
 	const handleSignUp=async(e)=>{
 		// e.preventDefault()
-		// console.log('hope')
+		console.log(userData)
 		try{
 			// const tasksRef = doc(firestore, "tasks", `${user.user.uid}`);
 			// setDoc(tasksRef, {})
@@ -36,8 +36,8 @@ const Signup = (props) => {
 				age:userData.age,
 				phone: '', 
 				photo: 'https://i.ibb.co/YRHhgDn/ava.png',
-				tasks: {}}
-			// console.log(arra)
+				tasks: []}
+			console.log(arra)
 
 			const ref = doc(firestore, 'users', `${user.user.uid}`);
 			await setDoc(ref, arra)
@@ -47,6 +47,7 @@ const Signup = (props) => {
 		}catch(error){
 			// console.log(error.message)
 			setError(error.message)
+			console.log(error.message)
 		}
 		
 		setUserData({email:'',
@@ -54,25 +55,24 @@ const Signup = (props) => {
 		login:''})
 	}
 	return (
+	<div className={cl.signUpContainer}>
 		<div className={cl.signup}>
-		<div className={cl.title}>
-			<img src={require('../../images/icon.png')}></img>
-			<div>{props.lang?'Sign up for TODO':'Зарегистрироваться'}</div>
-			
+			<div className={cl.title}>
+				<img src={require('../../images/icon.png')}></img>
+				<div>{props.lang?'Sign up for TODO':'Зарегистрироваться'}</div>
+		
+			</div>
+			<form  style={{display:'flex', textAlign:'center', flexDirection:'column', height:'auto', marginTop:'3px', justifyContent:'space-between'}}>
+				<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, login: e.target.value}})} label={props.lang?'Name':'Имя'}  type='text'></MyInput>
+				<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, age: e.target.value}})} label={props.lang?'Age':'Возраст'}  type='text'></MyInput>
+				<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, email: e.target.value}})} label={props.lang?'Email':"Почта"}  type='text'></MyInput>
+				<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, password: e.target.value}})} label={props.lang?'Password':'Пароль'} type='password'	></MyInput>
+				<button onClick={(e)=>{e.preventDefault(); handleSignUp()}} className={cl.btn}>{props.lang?'Sign Up':'Зарегистрироваться'}</button>
+				{/* <button onClick={(e)=>{e.preventDefault();handleClick()}}>Войти</button>
+				<button onClick={(e)=>{e.preventDefault();handleGoogleClick()}}></button> */}
+			</form>
+			<Link style={{margin:'10px auto', fontSize:'12px'}} to="/login">{props.lang?'I already have an acc':'Уже есть аккаунт'}</Link>
 		</div>
-		<form  style={{display:'flex', textAlign:'center', flexDirection:'column', height:'auto', marginTop:'3px', justifyContent:'space-between'}}>
-
-			<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, login: e.target.value}})} label={props.lang?'Name':'Имя'}  type='text'></MyInput>
-			<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, age: e.target.value}})} label={props.lang?'Age':'Возраст'}  type='text'></MyInput>
-
-
-			<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, email: e.target.value}})} label={props.lang?'Email':"Почта"}  type='text'></MyInput>
-			<MyInput visible={true} onChange={(e)=>setUserData(prev=>{return {...prev, password: e.target.value}})} label={props.lang?'Password':'Пароль'} type='password'	></MyInput>
-			<button onClick={(e)=>{e.preventDefault(); handleSignUp()}} className={cl.btn}>{props.lang?'Sign Up':'Зарегистрироваться'}</button>
-			{/* <button onClick={(e)=>{e.preventDefault();handleClick()}}>Войти</button>
-			<button onClick={(e)=>{e.preventDefault();handleGoogleClick()}}></button> */}
-		</form>
-		<Link style={{margin:'10px auto', fontSize:'12px'}} to="/login">{props.lang?'I already have an acc':'Уже есть аккаунт'}</Link>
 	</div>
 	);
 };

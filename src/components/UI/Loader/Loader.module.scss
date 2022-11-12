@@ -10,12 +10,21 @@
    50% { transform: translate(24.48px,0) }
   100% { transform: translate(0,0) }
 }
+.loaderContainer{
+	position: relative;
+	height: 65vh;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	padding-bottom: 100px;
+}
 .ldio-q7pgiuqi4y8 div {
   position: absolute;
   width: 30.48px;
   height: 30.48px;
   border-radius: 50%;
   top: 64.26px;
+	
   left: 52.02px;
 
 }
@@ -37,6 +46,7 @@ $color2: #4d11f4;
   animation-delay: -0.5952380952380952s;
 }
 .loadingio-spinner-dual-ball-rhjg227ofs {
+	margin-top: 40%;
   width: 153px;
   height: 153px;
   display: inline-block;

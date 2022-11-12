@@ -22,6 +22,7 @@ import { fontSize } from '@mui/system';
 import Loader from '../../components/UI/Loader/Loader';
 import ModalDialog from '../../components/ModalDialog/ModalDialog';
 const Tasks = (props) => {
+	
 	const {auth, firestore} = useContext(Context)
 	
 	const [user] = useAuthState(auth)
@@ -31,7 +32,7 @@ const Tasks = (props) => {
 	const ref = doc(firestore, 'users', `${a}`);
 	// getDoc(ref).then(res=>console.log(res.data().tasks))
 	const [userData, loading, error, snapshot] = useDocumentData(ref)
-
+	// console.log(userData.tasks);
 	const [listState, setListState] = useState('all');
 
 	const handleDelete=(step)=>{
@@ -103,7 +104,7 @@ const Tasks = (props) => {
 				</DragDropContext>
 			</div>
 			<div style={st} className={cl.queries}>
-				<div>{userData.tasks.filter(task=>task.isActive).length} {props.lang?'items left':'задани(й/я/е)'}</div>
+				{userData.tasks!=={}?<div>{userData.tasks.filter(task=>task.isActive).length} {props.lang?'items left':'задани(й/я/е)'}</div>:''}
 				<div  className={cl.activity}>
 					<button style={st} onClick={()=>setListState('all')}>{props.lang?'All':'Все'}</button>
 					<button style={st} onClick={()=>setListState('active')}>{props.lang?'Active':'В процессе'}</button>

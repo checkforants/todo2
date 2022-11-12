@@ -12,13 +12,12 @@ import About from './../pages/About';
 import { useTransition, animated,useSpringRef } from 'react-spring'
 
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { useNavigate } from 'react-router-dom';
 
 const AppRouter = (props) => {
 	
 	const {auth, firestore} = useContext(Context)
 	const [user, usLoading, usError] = useAuthState(auth) 
-	
-	
 	
 
 	return (

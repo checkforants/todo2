@@ -1,0 +1,49 @@
+.DT {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: center;
+  color: white;
+  max-width: 500px;
+  min-width: 330px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+select {
+  font-size: 11px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 0;
+  outline: 0;
+}
+
+option {
+  color: black;
+}
+
+.about {
+  cursor: pointer;
+  color: white;
+}
+
+.light {
+  color: #20308a;
+}
+
+.light select {
+  font-size: 11px;
+  color: #1a2c8e;
+}
+
+.light .about {
+  cursor: pointer;
+  color: #20308a;
+}

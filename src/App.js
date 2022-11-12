@@ -1,6 +1,6 @@
 import './App.scss';
-import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate  } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate, HashRouter  } from "react-router-dom";
 import AppRouter from './components/AppRouter';
 import UpTitle from './components/UI/UpTitle/UpTitle';
 import DownTools from './components/DownTools/DownTools';
@@ -18,17 +18,18 @@ function App(props) {
 	// if (isDarkTheme){
 	// 	cl = 'app dark'
 	// }
-	
 
   return (
 
 		<div className={props.isDarkTheme?'app dark':'app light'}>
 			
-			<BrowserRouter>
-			<UpTitle></UpTitle>
-				<AppRouter/>
-				<DownTools></DownTools>
-			</BrowserRouter>
+			<HashRouter>
+
+					<UpTitle></UpTitle>
+					<AppRouter/>
+					<DownTools></DownTools>
+
+			</HashRouter>
 			
 		</div>
   );

@@ -1,0 +1,78 @@
+.tasks {
+  height: 65vh;
+  margin-top: 5vh;
+  max-width: 450px;
+  min-width: 350px;
+  color: white;
+}
+
+.tasksWindow {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #25273c;
+  -webkit-box-shadow: 0px 0px 22px 6px rgba(13, 18, 48, 0.311);
+          box-shadow: 0px 0px 22px 6px rgba(13, 18, 48, 0.311);
+}
+
+.tasksList {
+  height: 43vh;
+  background-color: #25273c;
+  overflow-y: scroll;
+  border-radius: 5px;
+}
+
+.tasksList::-webkit-scrollbar {
+  width: 3px;
+}
+
+.tasksList::-webkit-scrollbar-track {
+  background-color: rgba(37, 39, 60, 0);
+  border-radius: 10px;
+}
+
+.tasksList::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#7143926d), to(#508c9799));
+  background: linear-gradient(180deg, #7143926d, #508c9799);
+}
+
+.queries {
+  -webkit-box-shadow: 0px 0px 22px 6px rgba(13, 18, 48, 0.311);
+          box-shadow: 0px 0px 22px 6px rgba(13, 18, 48, 0.311);
+  margin-top: 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  color: white;
+  height: 40px;
+  width: 100%;
+  background-color: #25273c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0px 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.queries button {
+  cursor: pointer;
+  font-size: 10px;
+  margin: 0px 5px;
+  border: 0px;
+  color: white;
+  background-color: #11ffee00;
+}
+
+@media (max-width: 767px) {
+  .tasks {
+    max-width: 350px;
+    max-height: 75vh;
+  }
+  .tasksList {
+    max-height: 430px;
+  }
+}

@@ -75,30 +75,31 @@ const Login = (props) => {
 
 	// if (nextClicked){}
 	return  (
-		<div  className={cl.login}>
-				{error?<Alert severity="warning">{error}</Alert>:''}	
-			<div className={cl.title}>
-				<img src={require('../../images/icon.png')}></img>
-				<div>{props.lang?'Log in to TODO':'Зайти'}</div>
-				
-			</div>
-			<form  style={{display:'flex', textAlign:'center', flexDirection:'column', height:'auto', marginTop:'3px', justifyContent:'space-between'}}>
-				
-				<MyInput  onChange={(e)=>setUserData(prev=>{return {...prev, email: e.target.value}})} label={props.lang?'Email':'Почта'}  type='text'></MyInput>
-				
-				<div className={cl.accordion}>
-					<div className={cl.accordionItem}>
-						<div className={nextClicked?cl.content+' '+cl.active:cl.content}>
-							<div className={nextClicked?cl.contentInner+' '+cl.active:cl.contentInner}>
-								<MyInput  onChange={(e)=>setUserData(prev=>{return {...prev, password: e.target.value}})} label={props.lang?'Password':'Пароль'} type='password'></MyInput>
+		<div className={cl.loginContainer}>
+			<div  className={cl.login}>
+					{error?<Alert severity="warning">{error}</Alert>:''}
+				<div className={cl.title}>
+					<img src={require('../../images/icon.png')}></img>
+					<div>{props.lang?'Log in to TODO':'Зайти'}</div>
+			
+				</div>
+				<form  style={{display:'flex', textAlign:'center', flexDirection:'column', height:'auto', marginTop:'3px', justifyContent:'space-between'}}>
+			
+					<MyInput  onChange={(e)=>setUserData(prev=>{return {...prev, email: e.target.value}})} label={props.lang?'Email':'Почта'}  type='text'></MyInput>
+			
+					<div className={cl.accordion}>
+						<div className={cl.accordionItem}>
+							<div className={nextClicked?cl.content+' '+cl.active:cl.content}>
+								<div className={nextClicked?cl.contentInner+' '+cl.active:cl.contentInner}>
+									<MyInput  onChange={(e)=>setUserData(prev=>{return {...prev, password: e.target.value}})} label={props.lang?'Password':'Пароль'} type='password'></MyInput>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-			<button onClick={(e)=>{e.preventDefault(); if(nextClicked){handleClick()}else{setNextClicked(true)}}} className={cl.next}>{nextClicked?props.lang?'Sign In':'Зайти':props.lang?'Next':'Дальше'}</button>	
-			</form>
-			<Link style={{margin:'10px auto', fontSize:'12px'}} to="/signup">{props.lang?"Still don't have an acc?":'До сих пор нет аккаунта?'}</Link>
+				<button onClick={(e)=>{e.preventDefault(); if(nextClicked){handleClick()}else{setNextClicked(true)}}} className={cl.next}>{nextClicked?props.lang?'Sign In':'Зайти':props.lang?'Next':'Дальше'}</button>
+				</form>
+				<Link style={{margin:'10px auto', fontSize:'12px'}} to="/signup">{props.lang?"Still don't have an acc?":'До сих пор нет аккаунта?'}</Link>
+			</div>
 		</div>
 
 	);
