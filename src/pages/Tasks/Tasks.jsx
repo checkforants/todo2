@@ -97,13 +97,14 @@ const Tasks = (props) => {
 						<div style={st} className={cl.tasksList}
 						ref={provided.innerRef}
 						{...provided.droppableProps}>
-
-							{listState=='active'?userData.tasks.map((task, step)=>{if (task.isActive){return(
+							{userData.tasks
+								.filter((task)=>
+									listState=='active'?task.isActive
+									:listState=='completed'?(!task.isActive)
+									:true)
+								.map((task, step)=>{{return(
 									<Task checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>
-
-								)}})
-							:listState=='completed'?userData.tasks.map((task, step)=>{if (!task.isActive){return(<Task checkClickHandler={()=>checkClickHandler(step, task)}  step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)}})
-							:userData.tasks.map((task, step)=>{return(<Task checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>)})}
+							)}})}
 						{provided.placeholder}
 						</div>
 					)}
