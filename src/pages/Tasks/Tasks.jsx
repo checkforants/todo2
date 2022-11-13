@@ -24,7 +24,7 @@ import ModalDialog from '../../components/ModalDialog/ModalDialog';
 const Tasks = (props) => {
 	
 	const {auth, firestore} = useContext(Context)
-	const {editingTaskNumber, setEditingTaskNumber} = useState('')
+	const [editingTaskNumber, setEditingTaskNumber] = useState('')
 	const [user] = useAuthState(auth)
 	const a = user.uid
 	const [tasks,setTasks] = useState([]);
@@ -42,9 +42,7 @@ const Tasks = (props) => {
 		setDoc(ref, obj)
 		// console.log(obj);
 	}
-	const handleEdit=(ind)=>{
-		console.log(ind)
-	}
+
 	const handleDelete=(step)=>{
 		let tasks = [...userData.tasks]
 		tasks.splice(step, 1)
@@ -103,7 +101,7 @@ const Tasks = (props) => {
 									:listState=='completed'?(!task.isActive)
 									:true)
 								.map((task, step)=>{{return(
-									<Task checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>
+									<Task firebaseRef={ref} setEditingTaskNumber={setEditingTaskNumber} editingTaskNumber={editingTaskNumber} checkClickHandler={()=>checkClickHandler(step, task)} step={step} handleDelete={handleDelete} tasks={userData.tasks} task = {task} key={task.id}>{task.text}</Task>
 							)}})}
 						{provided.placeholder}
 						</div>

@@ -41,6 +41,17 @@
 .text{
 	flex: 0 1 80%;
 }
+
+input.text{
+	background-color: rgba(white, 0);
+	border: 0px;
+	border-bottom: solid 1px $brightBlue;
+	color: white;
+	height: auto;
+	padding: 7px 0px;
+	font-size: 12px;
+	border-radius: 0px;
+}
 .cross, .edit{
 	flex: 0 1 7%;
 	padding: 10px 5px;
